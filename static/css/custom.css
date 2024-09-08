@@ -1,0 +1,42 @@
+/* Custom styles for the masthead */
+header.masthead {
+    padding-top: 4rem; /* Changing padding */
+    padding-bottom: 1.5rem;
+    background-size: cover;
+    background-position: center;
+    color: #ffffff; /*  text color */
+    text-align: center; /* Aligning text */
+}
+
+header.masthead h1 {
+    font-size: 2.5rem; /* Header h1 font size */
+    font-weight: bold; /* Font weight */
+}
+
+header.masthead p {
+    font-size: 1rem; /* Paragraph text size */
+    margin-top: 0.5rem;
+    font-style: italic; /* Italic style */
+}
+
+header.masthead .page-heading h1, header.masthead .page-heading .h1,
+header.masthead .site-heading h1,
+header.masthead .site-heading .h1 {
+  font-size: 3rem;
+}
+
+header.masthead .site-heading .subheading {
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.1;
+  display: block;
+  margin-top: 0.625rem;
+  font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.my-font {
+    font-size: 1.0rem;
+    font-weight: bold;
+    font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    line-height: 1.0;
+}

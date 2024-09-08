@@ -1,0 +1,82 @@
+{% include "header.html" %}
+
+<!-- Page Header-->
+<header
+  class="masthead"
+  style="background-image: url('../static/assets/img/Beyerheadphones.jpg')"
+>
+  <div class="container position-relative px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+      <div class="col-md-10 col-lg-8 col-xl-7">
+        <div class="site-heading">
+          <h1>Dichotica</h1>
+          <span class="subheading">Dichotic listening test</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<!-- Main Content-->
+<div class="container px-4 px-lg-5">
+    <!-- REGISTER -->
+   <div class ="row gx-4 gx-lg-5 mb-4">
+      <div class="col-4"></div>
+      <div class="col-1 d-flex justify-content-center">
+          <img src="../static/assets/Register_icon.svg" width="60" alt="Register Icon" >
+      </div>
+      <div class="col-4 d-flex align-items-center">
+          <a href="{{  url_for('register') }}" class="btn btn-outline-primary">Register</a>
+      </div>
+
+  </div>
+
+   <!-- TRAINING -->
+  <div class ="row gx-4 gx-lg-5 mb-4">
+      <div class="col-4"></div>
+      <div class="col-1 d-flex justify-content-center">
+          <img src="../static/assets/Training_icon.svg" width="60" alt="Training icon" >
+      </div>
+      <div class="col-4 d-flex align-items-center">
+          <a href="{{  url_for('training') }}" class="btn btn-outline-primary">Training</a>
+      </div>
+
+  </div>
+
+  <!-- DICHOTICA TEST -->
+  <div class ="row gx-4 gx-lg-5 mb-4">
+      <div class="col-4"></div>
+      <div class="col-1 d-flex justify-content-center">
+          <img src="../static/assets/Headphone_icon.svg" width="60" alt="Test icon">
+      </div>
+      <div class="col-4 d-flex align-items-center">
+          <a href="{{  url_for('dicho_test') }}" class="btn btn-outline-primary">Test   </a>
+      </div>
+
+  </div>
+
+ <!-- ANALYSIS  -->
+    <div class ="row gx-4 gx-lg-5 mb-4">
+      <div class="col-4"></div>
+      <div class="col-1 d-flex justify-content-center">
+          <img src="../static/assets/Analysis_icon.svg" width="60" alt="Analysis icon">
+      </div>
+      <div class="col-4 d-flex align-items-center">
+          <a href="{{ url_for('select_data') }}" class="btn btn-outline-primary">Analysis</a>
+      </div>
+    </div>
+
+    <!-- LOGOUT -->
+    <div class ="row gx-4 gx-lg-5 mb-4">
+      <div class="col-4"></div>
+      <div class="col-1 d-flex justify-content-center">
+          <img src="../static/assets/Logout icon.svg" width="60" alt="Analysis icon">
+      </div>
+      <div class="col-4 d-flex align-items-center">
+          <a href="{{ url_for('shutdown') }}" class="btn btn-outline-primary">Log out</a>
+      </div>
+    </div>
+</div>
+
+
+
+{% include "footer.html" %}

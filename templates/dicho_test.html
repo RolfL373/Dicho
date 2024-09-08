@@ -1,0 +1,132 @@
+{% include "header.html" %}
+
+<header
+  class="masthead"
+  style="background-image: url('../static/assets/img/Soundwave.jpg')"
+>
+  <div class="container position-relative px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+      <div class="col-md-10 col-lg-8 col-xl-7">
+        <div class="site-heading">
+            <h1>Dichotica test</h1>
+            <span class="subheading">Play dichotic sounds and store data</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<body>
+<div class="container mt-5 mb-5 text-center">
+
+    {% set sound=audio_file.split(".")[0] %}
+    {% set display_index=next_index+1 %}
+
+    <!-- DISPLAY RIGHT AND LEFT SOUND, INDEX -->
+    <div class="row justify-content-center mt-5">
+        <div class="col-auto">
+            <h2> G: {{ sound.split("_")[0] }} </h2>
+        </div>
+        <div class="col-auto">
+            <h2> D: {{ sound.split("_")[1] }} </h2>
+        </div>
+        <div class="col-auto">
+            <h2> {{ display_index }} </h2>
+        </div>
+    </div>
+
+    <!-- PLAY SOUND BUTTON -->
+    <div class="row justify-content-center mt-4">
+        <div class="col-auto">
+            <button onclick="playSound()" class="btn btn-success">Play</button>
+            <audio id="audio" src="{{ url_for('static', filename='audio/' + audio_file) }}"></audio>
+        </div>
+    </div>
+
+    <!-- RADIO BUTTON FORM -->
+    <form id="radioForm" action="{{ url_for('play_dicho',index=next_index) }}" method="post" onsubmit="return validateForm()">
+        <div class="row justify-content-center mt-4 mb-4">
+            <div class="col-auto">
+                <input type="radio" class="btn-check" name="option" id="left" value="G" autocomplete="off">
+                <label class="btn btn-outline-secondary" for="left">G</label>
+            </div>
+            <div class="col-auto">
+                <input type="radio" class="btn-check" name="option" id="right" value="D" autocomplete="off">
+                <label class="btn btn-outline-secondary" for="right">D</label>
+            </div>
+            <div class="col-auto">
+                <input type="radio" class="btn-check" name="option" id="unknown" value="B" autocomplete="off">
+                <label class="btn btn-outline-secondary" for="unknown">B</label>
+            </div>
+            <div class="col-auto">
+                <input type="radio" class="btn-check" name="option" id="false" value="" autocomplete="off">
+                <label class="btn btn-outline-secondary" for="false">X</label>
+            </div>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-outline-primary">Register</button>
+            </div>
+        </div>
+    </form>
+
+    <!-- BACK BUTTON -->
+    <div class="row justify-content-center mt-4">
+        <div class="col-auto">
+            <a href="{{ url_for('play_dicho',index=next_index-1) }}" class="btn btn-outline-warning">Back</a>
+        </div>
+    </div>
+
+    <!-- STORE BUTTON -->
+    <div class="row justify-content-center mt-4">
+        <div class="col-auto">
+            <a href="{{ url_for('download_csv') }}" class="btn btn-danger">Write CSV file</a>
+        </div>
+    </div>
+
+     <!-- ANALYSE BUTTON -->
+    <div class="row justify-content-center mt-4">
+        <div class="col-auto">
+            <a href="{{ url_for('select_data') }}" class="btn btn-primary">Analysis</a>
+        </div>
+    </div>
+
+</div>
+
+<!-- JavaScript to Play Sound -->
+<script>
+    function playSound(){
+        var audio = document.getElementById('audio');
+        audio.play();
+    }
+</script>
+
+<!-- JavaScript Form Validation -->
+<script>
+    function validateForm() {
+        // Get all radio buttons with the name 'option'
+        const options = document.getElementsByName('option');
+        let isChecked = false;
+
+        // Check if any radio button is selected
+        for (let i = 0; i < options.length; i++) {
+            if (options[i].checked) {
+                isChecked = true;
+                break;
+            }
+        }
+
+        // If no radio button is selected, show an alert and prevent form submission
+        if (!isChecked) {
+            alert("Please select an option before submitting.");
+            return false;  // Prevent form submission
+        }
+
+        return true;  // Allow form submission
+    }
+</script>
+
+<!-- Bootstrap and jQuery Scripts -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+{% include "footer.html" %}

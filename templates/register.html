@@ -1,0 +1,83 @@
+{% include "header.html" %}
+
+<!-- Page Header-->
+<header
+  class="masthead" style="background-image: url('../static/assets/img/register.jpg')">
+
+  <div class="container position-relative px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+      <div class="col-md-10 col-lg-8 col-xl-7">
+        <div class="page-heading">
+            <h1>Registration</h1>
+            <span class="subheading">Personal details</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Main Content-->
+<main class="mb-4">
+  <div class="container px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+
+      <!-- Center form on the page -->
+      <div class="col-md-6 col-lg-5 col-xl-5">
+
+        <!-- Registration form-->
+        <div class="my-5">
+          <form id="contactForm" class="my-font mt-4" name="sentMessage" onsubmit="return validateForm()" action="{{ url_for('register') }}" method="post">
+
+            <!-- First Name Field -->
+            <div class="mb-3">
+              <label for="first_name" class="form-label">First name</label>
+              <input type="text" class="form-control" id="first_name" name="first_name" placeholder="First name" required>
+            </div>
+
+            <!-- Last Name Field -->
+            <div class="mb-3">
+              <label for="last_name" class="form-label">Last name</label>
+              <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Last name" required>
+            </div>
+
+            <!-- Birth Date Field -->
+            <div class="mb-3">
+              <label for="birthDate" class="form-label">Birth date</label>
+              <input type="text" class="form-control" id="birthDate" name="birthDate" placeholder="DD/MM/YYYY" required>
+            </div>
+
+            <!-- Gender Field -->
+            <div class="mb-3">
+              <label for="gender" class="form-label">Gender</label>
+              <input type="text" class="form-control" id="gender" name="gender" placeholder="M/F" required>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="d-grid">
+              <button class="btn btn-danger text-uppercase" id="submitButton" type="submit">Submit</button>
+            </div>
+
+          </form>
+            
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+    <script>
+        function validateForm() {
+            const birthDateInput = document.getElementById('birthDate').value;
+            const birthDatePattern = /^(\d{2})\/(\d{2})\/(\d{4})$/;
+
+            if (!birthDatePattern.test(birthDateInput)) {
+                alert('Please enter the birth date in the format DD/MM/YYYY.');
+                return false;
+            }
+
+        }
+    </script>
+</main>
+
+{% include "footer.html" %}

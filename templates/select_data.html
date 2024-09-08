@@ -1,0 +1,56 @@
+{% include "header.html" %}
+
+<header
+  class="masthead"
+  style="background-image: url('../static/assets/img/select_data.jpg')"
+>
+  <div class="container position-relative px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+      <div class="col-md-10 col-lg-8 col-xl-7">
+        <div class="site-heading">
+            <h1>Analysis</h1>
+            <span class="subheading">Current or archived data</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<body>
+<div class="container mt-5 mb-5 text-center">
+    <div class="row justify-content-center mt-5">
+        <div class="col-auto">
+            <h2>Select data source</h2>
+        </div>
+    </div>
+
+    <div class="row justify-content-center mt-5">
+        <div class="col-auto">
+            {% if registered %}
+            <a   href="{{ url_for("analyse_data", file_path=file_path) }}" class="btn btn-success mb-4">Current data</a>
+            {% endif %}
+
+            <form action="{{ url_for('select_data') }}" class="my-font mt-4" method="POST" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label class="form-label" style="font-weight:bold;">Select archived file:</label>
+                </div>
+                <div class="mb-3">
+                    <input class="form-control" type="file" id="file" name="file" accept=".csv" required>
+                </div>
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-primary w-100">Analyse</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+
+
+<!-- Bootstrap and jQuery Scripts -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+{% include "footer.html" %}
